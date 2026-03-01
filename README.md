@@ -6,8 +6,8 @@ A Skill that will help agents audit your app or concrete features against access
 - Suggests follow-up human checks to perform
 
 Audit includes a problem, WCAG paragraph and a suggested solution with a code snippet. All in a descending priority markdown list. Looks like this:
-# Findings - P1
-## 1. Gesture-based task rows do not expose reliable control semantics
+## Findings - P1
+### 1. Gesture-based task rows do not expose reliable control semantics
 
 **What:** Likely issue (confidence: high). Task rows are interactive via .onTapGesture / .onLongPressGesture on a non-control container, so role/action/state exposure is not reliably equivalent to a native control for VoiceOver, Switch Control, or keyboard-style navigation.
 
@@ -38,7 +38,7 @@ ForEach(todosForDate) { todo in
     }
 }
 ```
-## 2. Copy feedback is shown visually/haptically but not announced as a status message
+### 2. Copy feedback is shown visually/haptically but not announced as a status message
 **What:** Copied to clipboard feedback is pushed through toast + haptic only; there is no UIAccessibility.post(.announcement, ...) on this feature path, so VoiceOver users may miss transient feedback.
 
 **Where:** HistoryView.swift, ToastMessageOverlay.swift
@@ -64,18 +64,18 @@ ForEach(todosForDate) { todo in
 )
 ```
 
-# Findings - P2
+## Findings - P2
 ...
 
-# Findings - P3
+## Findings - P3
 ...
 
-# Scope / Assumptions
+## Scope / Assumptions
 Audited with Swiftui Wcag Accessibility Auditor as a code-only review (no app run).
 
 In scope: HistoryView.swift, and ToastMessageOverlay.swift
 
-# User Follow-Up Checks
+## User Follow-Up Checks
 Set Dynamic Type to the largest accessibility size, open History in portrait and landscape, and verify all three mosaic legend labels remain fully readable without clipping/truncation.
 
 With VoiceOver enabled, trigger “copy to clipboard” on a history task and verify the confirmation is announced once, at the moment the toast appears.
